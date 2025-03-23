@@ -1,4 +1,3 @@
-// app.jsx
 import { useState } from "react";
 import SponsorCard from "./components/SponsorCard";
 import Dashboard from "./components/Dashboard";
@@ -13,22 +12,26 @@ export default function App() {
   ];
 
   return (
-    <div className="relative w-screen h-screen bg-gray-100 text-center flex flex-col gap-8">
+    <div className="relative w-screen h-screen bg-gray-100 text-center flex flex-col"> {/* Removido gap-8 */}
       <header className="bg-blue-950 p-4 flex justify-start items-center">
         <img src="/images/helpnei.webp" className="h-10 w-auto" alt="Helpnei Logo" />
       </header>
-      <div className="">
-        <h1 className="text-2xl font-bold mt-6 m-2">BEM VINDO À PÁGINA DE PATROCINADORES</h1>
-        <p className="mb-8 text-gray-600">Clique em algum dos cards para mais informações</p>
-      </div>
-      <div className="flex justify-center gap-10">
-        {sponsors.map((sponsor) => (
-          <SponsorCard key={sponsor.id} sponsor={sponsor} onClick={() => setSelectedSponsor(sponsor)} />
-        ))}
+
+      <div className="flex-grow flex flex-col gap-8"> {/* Adicionado flex flex-col gap-8 aqui */}
+        <div>
+          <h1 className="text-2xl font-bold mt-6 m-2">BEM VINDO À PÁGINA DE PATROCINADORES</h1>
+          <p className="mb-8 text-gray-600">Clique em algum dos cards para mais informações</p>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-10 px-4">
+          {sponsors.map((sponsor) => (
+            <SponsorCard key={sponsor.id} sponsor={sponsor} onClick={() => setSelectedSponsor(sponsor)} />
+          ))}
+        </div>
       </div>
 
       {selectedSponsor && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4">
           <Dashboard sponsor={selectedSponsor} onClose={() => setSelectedSponsor(null)} />
         </div>
       )}
