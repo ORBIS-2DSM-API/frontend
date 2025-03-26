@@ -9,7 +9,7 @@ export default function SponsorCard({ sponsor, onClick }) {
       <img
         src={sponsor.logo}
         alt={sponsor.name}
-        className="h-32 mx-auto max-w-full" // Adicionado max-w-full
+        className="h-32 mx-auto max-w-full" 
       />
       <div className="flex justify-center gap-6 mt-4">
         <a

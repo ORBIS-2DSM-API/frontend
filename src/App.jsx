@@ -12,12 +12,12 @@ export default function App() {
   ];
 
   return (
-    <div className="relative w-screen h-screen bg-gray-100 text-center flex flex-col"> {/* Removido gap-8 */}
+    <div className="relative w-screen h-screen bg-gray-100 text-center flex flex-col">
       <header className="bg-blue-950 p-4 flex justify-start items-center">
         <img src="/images/helpnei.webp" className="h-10 w-auto" alt="Helpnei Logo" />
       </header>
 
-      <div className="flex-grow flex flex-col gap-8"> {/* Adicionado flex flex-col gap-8 aqui */}
+      <div className="flex-grow flex flex-col gap-8">
         <div>
           <h1 className="text-2xl font-bold mt-6 m-2">BEM VINDO À PÁGINA DE PATROCINADORES</h1>
           <p className="mb-8 text-gray-600">Clique em algum dos cards para mais informações</p>
