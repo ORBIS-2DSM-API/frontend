@@ -9,10 +9,13 @@ export default function App() {
     { id: 1, name: "VALPA", logo: "/images/valpa_logo.webp" },
     { id: 2, name: "VALPA", logo: "/images/valpa_logo.webp" },
     { id: 3, name: "VALPA", logo: "/images/valpa_logo.webp" },
+    { id: 4, name: "VALPA", logo: "/images/valpa_logo.webp" },
+    { id: 5, name: "VALPA", logo: "/images/valpa_logo.webp" },
+    { id: 6, name: "VALPA", logo: "/images/valpa_logo.webp" }
   ];
 
   return (
-    <div className="relative w-screen h-screen bg-gray-100 text-center flex flex-col">
+    <div className="relative w-full min-h-screen bg-gray-100 text-center flex flex-col">
       <header className="bg-blue-950 p-4 flex justify-start items-center">
         <img src="/images/helpnei.webp" className="h-10 w-auto" alt="Helpnei Logo" />
       </header>
@@ -22,8 +25,7 @@ export default function App() {
           <h1 className="text-2xl font-bold mt-6 m-2">BEM VINDO À PÁGINA DE PATROCINADORES</h1>
           <p className="mb-8 text-gray-600">Clique em algum dos cards para mais informações</p>
         </div>
-
-        <div className="flex flex-wrap justify-center gap-10 px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-14 gap-y-10 px-4 mx-auto max-w-6xl">
           {sponsors.map((sponsor) => (
             <SponsorCard key={sponsor.id} sponsor={sponsor} onClick={() => setSelectedSponsor(sponsor)} />
           ))}
