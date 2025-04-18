@@ -2,87 +2,9 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { RxCross1 } from "react-icons/rx";
 import "leaflet/dist/leaflet.css";
 import { Link } from "react-router-dom";
+import vendedores from "../data/vendedores.json"
 
 export default function Dashboard({ sponsor, onClose }) {
-  const vendedores = [
-    {
-      lat: -23.55052,
-      lng: -46.633308,
-      cidade: "São Paulo",
-      estado: "SP",
-      quantidade: 20,
-    },
-    {
-      lat: -22.906847,
-      lng: -43.172897,
-      cidade: "Rio de Janeiro",
-      estado: "RJ",
-      quantidade: 15,
-    },
-    {
-      lat: -19.916681,
-      lng: -43.934493,
-      cidade: "Belo Horizonte",
-      estado: "MG",
-      quantidade: 10,
-    },
-    {
-      lat: -30.034647,
-      lng: -51.217659,
-      cidade: "Porto Alegre",
-      estado: "RS",
-      quantidade: 8,
-    },
-    {
-      lat: -22.90556,
-      lng: -47.06083,
-      cidade: "Campinas",
-      estado: "SP",
-      quantidade: 12,
-    },
-    {
-      lat: -23.1896,
-      lng: -45.8841,
-      cidade: "São José dos Campos",
-      estado: "SP",
-      quantidade: 9,
-    },
-    {
-      lat: -3.119,
-      lng: -60.0217,
-      cidade: "Manaus",
-      estado: "AM",
-      quantidade: 6,
-    },
-    {
-      lat: -8.0476,
-      lng: -34.877,
-      cidade: "Recife",
-      estado: "PE",
-      quantidade: 15,
-    },
-    {
-      lat: -3.7172,
-      lng: -38.5433,
-      cidade: "Fortaleza",
-      estado: "CE",
-      quantidade: 10,
-    },
-    {
-      lat: -16.6869,
-      lng: -49.2648,
-      cidade: "Goiânia",
-      estado: "GO",
-      quantidade: 11,
-    },
-    {
-      lat: -27.5954,
-      lng: -48.548,
-      cidade: "Florianópolis",
-      estado: "SC",
-      quantidade: 7,
-    },
-  ];
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
@@ -133,14 +55,14 @@ export default function Dashboard({ sponsor, onClose }) {
                 className="bg-gray-100 p-8 rounded-lg shadow flex flex-col"
               >
                 <div className="grid grid-cols-[auto_1fr] items-center gap-8 w-full">
-                  <p
+                  <span
                     className={`font-bold ${item.color} text-lg sm:text-2xl md:text-4xl break-words`}
                   >
                     {item.value}
-                  </p>
-                  <p className="text-sm sm:text-lg md:text-xl font-bold text-gray-600 text-right">
+                  </span>
+                  <span className="text-sm sm:text-lg md:text-xl font-bold text-gray-600 text-right">
                     {item.label}
-                  </p>
+                  </span>
                 </div>
                 <div
                   className={`h-5 sm:h-6 w-full mt-3 ${item.bar} rounded-md`}

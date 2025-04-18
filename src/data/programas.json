@@ -1,0 +1,86 @@
+[
+  {
+    "nome": "Natura",
+    "titulo": "Elas no comando",
+    "descricao": "Mulheres liderando, inovando e transformando os próprios negócios!",
+    "cor": "bg-orange-700",
+    "logo": "https://logospng.org/download/natura/logo-natura-512.png"
+  },
+  {
+    "nome": "Magalu",
+    "titulo": "Empreendedorismo jovem",
+    "descricao": "Para quem está começando com tudo!",
+    "cor": "bg-sky-700",
+    "logo": "https://logospng.org/download/magazine-luiza/logo-magazine-luiza-512.png"
+  },
+  {
+    "nome": "Cacau Show",
+    "titulo": "Raízes do Brasil",
+    "descricao": "Para quem empreende com sabor e dedicação. Ideal para pequenos produtores de alimentos.",
+    "cor": "bg-lime-800",
+    "logo": "https://logospng.org/download/cacau-show/logo-cacau-show-512.png"
+  },
+  {
+    "nome": "O Boticário",
+    "titulo": "Diversidade em movimento",
+    "descricao": "Empreendedorismo com orgulho e representatividade.",
+    "cor": "bg-pink-600",
+    "logo": "https://logospng.org/download/boticario/logo-boticario-512.png"
+  },
+  {
+    "nome": "Tramontina",
+    "titulo": "Mão na massa",
+    "descricao": "Para profissionais que inovam com as próprias mãos: serralheiros e marceneiros.",
+    "cor": "bg-yellow-600",
+    "logo": "https://logospng.org/download/tramontina/logo-tramontina-512.png"
+  },
+  {
+    "nome": "Ambev",
+    "titulo": "Bebidas que impulsionam",
+    "descricao": "Apoio a negócios locais no setor de alimentos e bebidas.",
+    "cor": "bg-amber-500",
+    "logo": "https://logospng.org/download/ambev/logo-ambev-512.png"
+  },
+  {
+    "nome": "Google",
+    "titulo": "Inovação para todos",
+    "descricao": "Programas de mentoria e aceleração para startups.",
+    "cor": "bg-blue-500",
+    "logo": "https://logospng.org/download/google/logo-google-512.png"
+  },
+  {
+    "nome": "Santander",
+    "titulo": "Prosperar juntos",
+    "descricao": "Linhas de crédito e capacitação para pequenos e médios negócios.",
+    "cor": "bg-red-600",
+    "logo": "https://logospng.org/download/santander/logo-santander-512.png"
+  },
+  {
+    "nome": "Avon",
+    "titulo": "Beleza que inspira",
+    "descricao": "Empoderando revendedores e pequenos empreendedores da beleza.",
+    "cor": "bg-rose-400",
+    "logo": "https://logospng.org/download/avon/logo-avon-512.png"
+  },
+  {
+    "nome": "Itaú",
+    "titulo": "Feito para você crescer",
+    "descricao": "Soluções financeiras e apoio para o desenvolvimento empresarial.",
+    "cor": "bg-orange-500",
+    "logo": "https://logospng.org/download/itau/logo-itau-512.png"
+  },
+  {
+    "nome": "Microsoft",
+    "titulo": "Tecnologia que transforma",
+    "descricao": "Ferramentas e recursos para impulsionar a transformação digital.",
+    "cor": "bg-green-500",
+    "logo": "https://logospng.org/download/microsoft/logo-microsoft-512.png"
+  },
+  {
+    "nome": "Petrobras",
+    "titulo": "Energia para o futuro",
+    "descricao": "Iniciativas de apoio a projetos inovadores em energia e sustentabilidade.",
+    "cor": "bg-blue-800",
+    "logo": "https://logospng.org/download/petrobras/logo-petrobras-512.png"
+  }
+]

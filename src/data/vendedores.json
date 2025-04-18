@@ -1,0 +1,80 @@
+[
+    {
+      "lat": -23.55052,
+      "lng": -46.633308,
+      "cidade": "São Paulo",
+      "estado": "SP",
+      "quantidade": 20
+    },
+    {
+      "lat": -22.906847,
+      "lng": -43.172897,
+      "cidade": "Rio de Janeiro",
+      "estado": "RJ",
+      "quantidade": 15
+    },
+    {
+      "lat": -19.916681,
+      "lng": -43.934493,
+      "cidade": "Belo Horizonte",
+      "estado": "MG",
+      "quantidade": 10
+    },
+    {
+      "lat": -30.034647,
+      "lng": -51.217659,
+      "cidade": "Porto Alegre",
+      "estado": "RS",
+      "quantidade": 8
+    },
+    {
+      "lat": -22.90556,
+      "lng": -47.06083,
+      "cidade": "Campinas",
+      "estado": "SP",
+      "quantidade": 12
+    },
+    {
+      "lat": -23.1896,
+      "lng": -45.8841,
+      "cidade": "São José dos Campos",
+      "estado": "SP",
+      "quantidade": 9
+    },
+    {
+      "lat": -3.119,
+      "lng": -60.0217,
+      "cidade": "Manaus",
+      "estado": "AM",
+      "quantidade": 6
+    },
+    {
+      "lat": -8.0476,
+      "lng": -34.877,
+      "cidade": "Recife",
+      "estado": "PE",
+      "quantidade": 15
+    },
+    {
+      "lat": -3.7172,
+      "lng": -38.5433,
+      "cidade": "Fortaleza",
+      "estado": "CE",
+      "quantidade": 10
+    },
+    {
+      "lat": -16.6869,
+      "lng": -49.2648,
+      "cidade": "Goiânia",
+      "estado": "GO",
+      "quantidade": 11
+    },
+    {
+      "lat": -27.5954,
+      "lng": -48.548,
+      "cidade": "Florianópolis",
+      "estado": "SC",
+      "quantidade": 7
+    }
+  ]
+  
