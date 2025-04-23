@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import CardPatrocinio from "../components/CardPatrocinio";
+import CardPatrocinio from "../components/CardPatrocinio.jsx";
 import programasData from "../data/programas.json";
 
 
@@ -26,7 +26,7 @@ export default function Programas() {
   }
 
   return (
-    <div className="relative w-full bg-gradient-to-b from-gray-100 to-gray-200 text-center flex flex-col">
+    <div className="relative h-full w-full bg-gradient-to-b from-gray-100 to-gray-200 text-center flex flex-col">
       <div className=" flex flex-col gap-8 items-center">
         <div className="flex flex-col items-center gap-2 max-w-[80vw] mt-10">
           <h1>PATROCÍNIO QUE TRANSFORMA!</h1>

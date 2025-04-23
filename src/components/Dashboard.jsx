@@ -1,25 +1,43 @@
+import { useRef, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { RxCross1 } from "react-icons/rx";
 import "leaflet/dist/leaflet.css";
 import { Link } from "react-router-dom";
-import vendedores from "../data/vendedores.json"
+import vendedores from "../data/vendedores.json";
 
 export default function Dashboard({ sponsor, onClose }) {
+  const modalRef = useRef();
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        onClose();
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [onClose]);
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-4 sm:p-10 rounded-2xl shadow-lg w-[95%] sm:w-[85%] min-h-[80vh] sm:h-[80vh] overflow-y-auto">
-        {/* Header Responsivo */}
+      <div
+        ref={modalRef}
+        className="bg-white p-4 sm:p-10 rounded-2xl shadow-lg w-[95%] sm:w-[85%] min-h-[80vh] sm:h-[80vh] overflow-y-auto"
+      >
         <div className="flex flex-row sm:flex-row justify-between items-start sm:items-center">
           <div className="flex justify-between items-center w-full">
             <img src={sponsor.logo} alt="Logo" className="h-16 sm:h-20" />
-            
+
             <div className="flex justify-between gap-10">
-            <Link
-              to={`/detalhes/${sponsor.name.toLowerCase()}`}
-              className="text-black text-lg hover:underline mt-2 sm:mt-0 font-bold">
-              Ir para Detalhes
-            </Link>
+              <Link
+                to={`/detalhes/${sponsor.nome.toLowerCase()}`}
+                className="text-black text-lg hover:underline mt-2 sm:mt-0 font-bold"
+              >
+                Ir para Detalhes
+              </Link>
               <button className="text-black text-2xl font-bold" onClick={onClose}>
                 <RxCross1 />
               </button>
@@ -27,7 +45,6 @@ export default function Dashboard({ sponsor, onClose }) {
           </div>
         </div>
 
-        {/* Layout ajustado */}
         <div className="flex flex-col sm:flex-row gap-6 sm:gap-10 mt-6 sm:mt-10">
           <div className="w-full flex flex-col justify-between gap-11 h-full">
             {[

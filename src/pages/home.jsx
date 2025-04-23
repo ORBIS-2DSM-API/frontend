@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import SponsorCard from "../components/SponsorCard";
-import Dashboard from "../components/Dashboard";
-import sponsors from "../data/sponsors.json";
+import SponsorCard from "../components/SponsorCard.jsx";
+import Dashboard from "../components/Dashboard.jsx";
+import sponsors from "../data/programas.json";
 
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
   }, [selectedSponsor]);
 
   return (
-    <div className="relative w-full min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 text-center flex flex-col">
+    <div className="relative h-full w-full bg-gradient-to-b from-gray-100 to-gray-200 text-center flex flex-col">
       
       <div className="flex-grow flex flex-col gap-8">
         <div className="flex flex-col items-center gap-2">

@@ -11,7 +11,7 @@
   }
 
   p {
-    @apply mb-4 text-gray-600 italic font-inter;
+    @apply text-gray-600 italic font-inter;
   }
 
   html, body, #root {
@@ -37,7 +37,7 @@ body {
 .container-swiper {
   max-width: 100%;
   padding: 2rem 1rem;
-  margin: 2rem auto;
+
 }
 
 .swiper_container {

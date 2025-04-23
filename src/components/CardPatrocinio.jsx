@@ -15,7 +15,7 @@ const CardPatrocinio = ({ nome, titulo, descricao, logo }) => {
         <h2 className="text-2xl font-semibold text-gray-800 mb-4 font-inter">{titulo}</h2>
         <p className="text-base text-gray-600 text-center mb-4">{descricao}</p>
       </div>
-      <Link to={`/formulario/${nome}`}>
+      <Link to={`/programasPatrocinio/${titulo}`}>
         <button className="px-8 py-3 bg-blue-900 text-white rounded-full font-medium text-sm hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
           Candidatar-se
         </button>

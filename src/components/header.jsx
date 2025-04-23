@@ -13,9 +13,9 @@ export default function Header(){
         </Link>
         <Link
           to={`/programasPatrocinio`}
-          className="text-white text-lg hover:text-gray-400 mt-2 sm:mt-0 font-bold"
+          className="text-white text-lg hover:text-gray-200 mt-2 sm:mt-0 font-bold"
         >
-          Candidatar-se
+          Vagas de Patrocínio
         </Link>
       </header>)
 

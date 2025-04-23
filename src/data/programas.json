@@ -1,86 +1,254 @@
 [
   {
+    "id": 1,
     "nome": "Natura",
     "titulo": "Elas no comando",
-    "descricao": "Mulheres liderando, inovando e transformando os próprios negócios!",
+    "descricao": "Mulheres liderando, inovando e transformando negócios!",
+    "descricaoDetalhada": "Programa voltado para mulheres empreendedoras...",
+    "idadeMin": 18,
+    "vagasDisponiveis": 50,
+    "nivelEscolaridade": "Ensino Médio Completo",
     "cor": "bg-orange-700",
-    "logo": "https://logospng.org/download/natura/logo-natura-512.png"
+    "logo": "https://logospng.org/download/natura/logo-natura-512.png",
+    "usuariosImpactados": 15426,
+    "usuariosImpactadosUltimoMes": 2580,
+    "comunidadesCriadas": 226,
+    "planosAdquiridos": 50,
+    "planosDistribuidos": 38,
+    "locaisAtuacao": {
+      "SP": { "cidades": ["São Paulo", "Campinas"] },
+      "RJ": { "cidades": ["Rio de Janeiro", "Niterói"] }
+    }
   },
   {
+    "id": 2,
     "nome": "Magalu",
     "titulo": "Empreendedorismo jovem",
     "descricao": "Para quem está começando com tudo!",
+    "descricaoDetalhada": "Desenvolva habilidades de gestão e vendas online...",
+    "idadeMin": 16,
+    "vagasDisponiveis": 100,
+    "nivelEscolaridade": "Ensino Fundamental Completo",
     "cor": "bg-sky-700",
-    "logo": "https://logospng.org/download/magazine-luiza/logo-magazine-luiza-512.png"
+    "logo": "https://logospng.org/download/magazine-luiza/logo-magazine-luiza-512.png",
+    "usuariosImpactados": 11200,
+    "usuariosImpactadosUltimoMes": 1943,
+    "comunidadesCriadas": 195,
+    "planosAdquiridos": 40,
+    "planosDistribuidos": 30,
+    "locaisAtuacao": {
+      "MG": { "cidades": ["Belo Horizonte", "Uberlândia"] },
+      "SP": { "cidades": ["São Paulo", "Ribeirão Preto"] }
+    }
   },
   {
+    "id": 3,
     "nome": "Cacau Show",
     "titulo": "Raízes do Brasil",
-    "descricao": "Para quem empreende com sabor e dedicação. Ideal para pequenos produtores de alimentos.",
+    "descricao": "Ideal para pequenos produtores de alimentos.",
+    "descricaoDetalhada": "Apoio a pequenos produtores de chocolates...",
+    "idadeMin": 21,
+    "vagasDisponiveis": 30,
+    "nivelEscolaridade": "Ensino Médio Completo",
     "cor": "bg-lime-800",
-    "logo": "https://logospng.org/download/cacau-show/logo-cacau-show-512.png"
+    "logo": "https://logospng.org/download/cacau-show/logo-cacau-show-512.png",
+    "usuariosImpactados": 6900,
+    "usuariosImpactadosUltimoMes": 877,
+    "comunidadesCriadas": 98,
+    "planosAdquiridos": 20,
+    "planosDistribuidos": 15,
+    "locaisAtuacao": {
+      "BA": { "cidades": ["Ilhéus", "Itabuna"] },
+      "ES": { "cidades": ["Linhares"] }
+    }
   },
   {
+    "id": 4,
     "nome": "O Boticário",
     "titulo": "Diversidade em movimento",
-    "descricao": "Empreendedorismo com orgulho e representatividade.",
+    "descricao": "Empoderamento e representatividade.",
+    "descricaoDetalhada": "Fomento a empreendedores LGBTQIA+...",
+    "idadeMin": 18,
+    "vagasDisponiveis": 40,
+    "nivelEscolaridade": "Ensino Médio Completo",
     "cor": "bg-pink-600",
-    "logo": "https://logospng.org/download/boticario/logo-boticario-512.png"
+    "logo": "https://logospng.org/download/boticario/logo-boticario-512.png",
+    "usuariosImpactados": 7200,
+    "usuariosImpactadosUltimoMes": 509,
+    "comunidadesCriadas": 125,
+    "planosAdquiridos": 35,
+    "planosDistribuidos": 28,
+    "locaisAtuacao": {
+      "PR": { "cidades": ["Curitiba", "Londrina"] },
+      "SC": { "cidades": ["Joinville"] }
+    }
   },
   {
+    "id": 5,
     "nome": "Tramontina",
     "titulo": "Mão na massa",
-    "descricao": "Para profissionais que inovam com as próprias mãos: serralheiros e marceneiros.",
+    "descricao": "Para profissionais que inovam com as próprias mãos.",
+    "descricaoDetalhada": "Programa para serralheiros e marceneiros...",
+    "idadeMin": 18,
+    "vagasDisponiveis": 25,
+    "nivelEscolaridade": "Ensino Fundamental Completo",
     "cor": "bg-yellow-600",
-    "logo": "https://logospng.org/download/tramontina/logo-tramontina-512.png"
+    "logo": "https://logospng.org/download/tramontina/logo-tramontina-512.png",
+    "usuariosImpactados": 5100,
+    "usuariosImpactadosUltimoMes": 500,
+    "comunidadesCriadas": 80,
+    "planosAdquiridos": 22,
+    "planosDistribuidos": 18,
+    "locaisAtuacao": {
+      "RS": { "cidades": ["Carlos Barbosa", "Caxias do Sul"] },
+      "SC": { "cidades": ["Blumenau"] }
+    }
   },
   {
+    "id": 6,
     "nome": "Ambev",
     "titulo": "Bebidas que impulsionam",
-    "descricao": "Apoio a negócios locais no setor de alimentos e bebidas.",
+    "descricao": "Apoio a negócios de alimentos e bebidas.",
+    "descricaoDetalhada": "Iniciativa para bares e microcervejarias...",
+    "idadeMin": 21,
+    "vagasDisponiveis": 20,
+    "nivelEscolaridade": "Ensino Médio Completo",
     "cor": "bg-amber-500",
-    "logo": "https://logospng.org/download/ambev/logo-ambev-512.png"
+    "logo": "https://logospng.org/download/ambev/logo-ambev-512.png",
+    "usuariosImpactados": 4300,
+    "usuariosImpactadosUltimoMes": 400,
+    "comunidadesCriadas": 60,
+    "planosAdquiridos": 18,
+    "planosDistribuidos": 14,
+    "locaisAtuacao": {
+      "SP": { "cidades": ["São Paulo"] },
+      "RS": { "cidades": ["Porto Alegre"] }
+    }
   },
   {
+    "id": 7,
     "nome": "Google",
     "titulo": "Inovação para todos",
-    "descricao": "Programas de mentoria e aceleração para startups.",
+    "descricao": "Mentoria e aceleração para startups.",
+    "descricaoDetalhada": "Programa de aceleração com foco em tecnologia...",
+    "idadeMin": 18,
+    "vagasDisponiveis": 15,
+    "nivelEscolaridade": "Ensino Superior Incompleto",
     "cor": "bg-blue-500",
-    "logo": "https://logospng.org/download/google/logo-google-512.png"
+    "logo": "https://logospng.org/download/google/logo-google-512.png",
+    "usuariosImpactados": 5800,
+    "usuariosImpactadosUltimoMes": 691,
+    "comunidadesCriadas": 130,
+    "planosAdquiridos": 27,
+    "planosDistribuidos": 22,
+    "locaisAtuacao": {
+      "SP": { "cidades": ["São Paulo"] },
+      "DF": { "cidades": ["Brasília"] }
+    }
   },
   {
+    "id": 8,
     "nome": "Santander",
     "titulo": "Prosperar juntos",
-    "descricao": "Linhas de crédito e capacitação para pequenos e médios negócios.",
+    "descricao": "Crédito e capacitação para PMEs.",
+    "descricaoDetalhada": "Linhas de crédito especiais e treinamentos financeiros...",
+    "idadeMin": 18,
+    "vagasDisponiveis": 60,
+    "nivelEscolaridade": "Ensino Médio Completo",
     "cor": "bg-red-600",
-    "logo": "https://logospng.org/download/santander/logo-santander-512.png"
+    "logo": "https://logospng.org/download/santander/logo-santander-512.png",
+    "usuariosImpactados": 7200,
+    "usuariosImpactadosUltimoMes": 509,
+    "comunidadesCriadas": 90,
+    "planosAdquiridos": 33,
+    "planosDistribuidos": 25,
+    "locaisAtuacao": {
+      "RJ": { "cidades": ["Rio de Janeiro"] },
+      "SP": { "cidades": ["Campinas"] }
+    }
   },
   {
+    "id": 9,
     "nome": "Avon",
     "titulo": "Beleza que inspira",
-    "descricao": "Empoderando revendedores e pequenos empreendedores da beleza.",
+    "descricao": "Empoderando revendedores de beleza.",
+    "descricaoDetalhada": "Apoio a revendedores Avon com treinamentos em vendas digitais...",
+    "idadeMin": 16,
+    "vagasDisponiveis": 80,
+    "nivelEscolaridade": "Ensino Fundamental Completo",
     "cor": "bg-rose-400",
-    "logo": "https://logospng.org/download/avon/logo-avon-512.png"
+    "logo": "https://logospng.org/download/avon/logo-avon-512.png",
+    "usuariosImpactados": 8300,
+    "usuariosImpactadosUltimoMes": 690,
+    "comunidadesCriadas": 102,
+    "planosAdquiridos": 36,
+    "planosDistribuidos": 29,
+    "locaisAtuacao": {
+      "PE": { "cidades": ["Recife"] },
+      "BA": { "cidades": ["Salvador"] }
+    }
   },
   {
+    "id": 10,
     "nome": "Itaú",
     "titulo": "Feito para você crescer",
-    "descricao": "Soluções financeiras e apoio para o desenvolvimento empresarial.",
+    "descricao": "Soluções financeiras empresariais.",
+    "descricaoDetalhada": "Apoio financeiro e consultoria em gestão...",
+    "idadeMin": 18,
+    "vagasDisponiveis": 45,
+    "nivelEscolaridade": "Ensino Médio Completo",
     "cor": "bg-orange-500",
-    "logo": "https://logospng.org/download/itau/logo-itau-512.png"
+    "logo": "https://logospng.org/download/itau/logo-itau-512.png",
+    "usuariosImpactados": 9200,
+    "usuariosImpactadosUltimoMes": 877,
+    "comunidadesCriadas": 110,
+    "planosAdquiridos": 42,
+    "planosDistribuidos": 32,
+    "locaisAtuacao": {
+      "SP": { "cidades": ["São Paulo"] },
+      "MG": { "cidades": ["Belo Horizonte"] }
+    }
   },
   {
+    "id": 11,
     "nome": "Microsoft",
     "titulo": "Tecnologia que transforma",
-    "descricao": "Ferramentas e recursos para impulsionar a transformação digital.",
+    "descricao": "Impulsionando transformação digital.",
+    "descricaoDetalhada": "Acesso a licenças Microsoft 365, treinamento em Azure...",
+    "idadeMin": 18,
+    "vagasDisponiveis": 30,
+    "nivelEscolaridade": "Ensino Superior Incompleto",
     "cor": "bg-green-500",
-    "logo": "https://logospng.org/download/microsoft/logo-microsoft-512.png"
+    "logo": "https://logospng.org/download/microsoft/logo-microsoft-512.png",
+    "usuariosImpactados": 8600,
+    "usuariosImpactadosUltimoMes": 691,
+    "comunidadesCriadas": 105,
+    "planosAdquiridos": 38,
+    "planosDistribuidos": 31,
+    "locaisAtuacao": {
+      "SP": { "cidades": ["São Paulo"] },
+      "CE": { "cidades": ["Fortaleza"] }
+    }
   },
   {
+    "id": 12,
     "nome": "Petrobras",
     "titulo": "Energia para o futuro",
-    "descricao": "Iniciativas de apoio a projetos inovadores em energia e sustentabilidade.",
+    "descricao": "Projetos inovadores em energia.",
+    "descricaoDetalhada": "Apoio a startups de energia e sustentabilidade...",
+    "idadeMin": 18,
+    "vagasDisponiveis": 20,
+    "nivelEscolaridade": "Ensino Superior Incompleto",
     "cor": "bg-blue-800",
-    "logo": "https://logospng.org/download/petrobras/logo-petrobras-512.png"
+    "logo": "https://logospng.org/download/petrobras/logo-petrobras-512.png",
+    "usuariosImpactados": 6900,
+    "usuariosImpactadosUltimoMes": 500,
+    "comunidadesCriadas": 95,
+    "planosAdquiridos": 29,
+    "planosDistribuidos": 24,
+    "locaisAtuacao": {
+      "RJ": { "cidades": ["Rio de Janeiro"] },
+      "RN": { "cidades": ["Natal"] }
+    }
   }
 ]

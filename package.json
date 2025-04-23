@@ -13,6 +13,7 @@
     "autoprefixer": "^10.4.20",
     "ionicons": "^7.4.0",
     "leaflet": "^1.9.4",
+    "lucide-react": "^0.503.0",
     "postcss": "^8.4.41",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
