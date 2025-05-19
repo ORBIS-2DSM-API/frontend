@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 function FormularioEmpresa() {
   const { nomeEmpresa } = useParams();
@@ -16,8 +17,16 @@ function FormularioEmpresa() {
     celular: '',
     rendaFamiliar: '',
     escolaridade: '',
+    email: '', // Campo adicionado para corresponder ao backend
+    cep: '', // Campo adicionado para corresponder ao backend
+    metodoNotificacao: 'email' // Campo adicionado para corresponder ao backend
   });
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState({ type: '', text: '' });
+
+  // URL da API
+  const API_URL = 'http://localhost:3000/api/candidates';
 
   const handleChange = (event) => {
     const { id, value } = event.target;
@@ -25,7 +34,43 @@ function FormularioEmpresa() {
     setErrors({ ...errors, [id]: '' }); 
   };
 
-  const validate = () => {
+  // Função para calcular a idade a partir da data de nascimento
+  const calculateAge = (birthDate) => {
+    const today = new Date();
+    const birth = new Date(birthDate);
+    let age = today.getFullYear() - birth.getFullYear();
+    const monthDiff = today.getMonth() - birth.getMonth();
+    
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+      age--;
+    }
+    
+    return age;
+  };
+
+  // Verificar duplicidade de email ou CPF
+  const checkDuplicate = async (field, value) => {
+    try {
+      const response = await axios.post(`${API_URL}/check-duplicate`, {
+        [field]: value
+      });
+      
+      if (response.data.duplicate) {
+        setErrors(prev => ({
+          ...prev,
+          [field]: response.data.message
+        }));
+        return true;
+      }
+      
+      return false;
+    } catch (error) {
+      console.error(`Erro ao verificar duplicidade de ${field}:`, error);
+      return false;
+    }
+  };
+
+  const validate = async () => {
     let isValid = true;
     const newErrors = {};
 
@@ -84,20 +129,129 @@ function FormularioEmpresa() {
       isValid = false;
     }
 
+    // Validação para o campo de email
+    if (!formData.email) {
+      newErrors.email = 'Email é obrigatório.';
+      isValid = false;
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Email inválido.';
+      isValid = false;
+    }
+
+    // Validação para o campo de CEP
+    if (!formData.cep) {
+      newErrors.cep = 'CEP é obrigatório.';
+      isValid = false;
+    } else if (!formData.cep.match(/^\d{5}-\d{3}$/)) {
+      newErrors.cep = 'CEP inválido (formato: 00000-000).';
+      isValid = false;
+    }
+
     setErrors(newErrors);
     return isValid;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (validate()) {
-      // ===========================================
-      // LOGICA DE ENVIO DE DADOS - backend
-      // ===========================================
-      console.log('Dados do Formulário:', formData);
-      alert('Formulário enviado com sucesso!');
+    
+    // Limpar mensagens anteriores
+    setSubmitMessage({ type: '', text: '' });
+    
+    if (await validate()) {
+      setIsSubmitting(true);
+      
+      try {
+        // Verificar duplicidade de email e CPF
+        const emailDuplicate = await checkDuplicate('email', formData.email);
+        const cpfDuplicate = await checkDuplicate('cpf', formData.cpf);
+        
+        if (emailDuplicate || cpfDuplicate) {
+          setSubmitMessage({
+            type: 'error',
+            text: 'Por favor, corrija os erros antes de enviar o formulário.'
+          });
+          setIsSubmitting(false);
+          return;
+        }
+        
+        // Calcular idade
+        const age = calculateAge(formData.dataNascimento);
+        
+        // Mapear os dados do formulário para o formato esperado pelo backend
+        const backendData = {
+          full_name: formData.nomeCompleto,
+          cpf: formData.cpf,
+          birth_date: formData.dataNascimento,
+          candidate_age: age,
+          gender: formData.sexo === 'masculino' ? 'M' : formData.sexo === 'feminino' ? 'F' : 'O',
+          street: formData.rua,
+          number: formData.numero,
+          complement: formData.complemento || null,
+          state: formData.estado,
+          city: formData.cidade,
+          phone: formData.celular,
+          family_income: parseFloat(formData.rendaFamiliar) || 0,
+          email: formData.email,
+          education_level: formData.escolaridade,
+          notification_method: formData.metodoNotificacao,
+          postal_code: formData.cep
+        };
+        
+        // Enviar dados para o backend
+        const response = await axios.post(API_URL, backendData);
+        
+        if (response.data.success) {
+          setSubmitMessage({
+            type: 'success',
+            text: 'Cadastro realizado com sucesso!'
+          });
+          
+          // Limpar formulário após sucesso
+          setFormData({
+            nomeCompleto: '',
+            dataNascimento: '',
+            cpf: '',
+            sexo: '',
+            rua: '',
+            numero: '',
+            complemento: '',
+            estado: '',
+            cidade: '',
+            celular: '',
+            rendaFamiliar: '',
+            escolaridade: '',
+            email: '',
+            cep: '',
+            metodoNotificacao: 'email'
+          });
+        } else {
+          setSubmitMessage({
+            type: 'error',
+            text: response.data.message || 'Erro ao enviar formulário.'
+          });
+        }
+      } catch (error) {
+        console.error('Erro ao enviar formulário:', error);
+        
+        if (error.response && error.response.data) {
+          setSubmitMessage({
+            type: 'error',
+            text: error.response.data.message || 'Falha no envio do formulário. Por favor, tente novamente.'
+          });
+        } else {
+          setSubmitMessage({
+            type: 'error',
+            text: 'Falha no envio do formulário. Por favor, tente novamente.'
+          });
+        }
+      } finally {
+        setIsSubmitting(false);
+      }
     } else {
-      alert('Por favor, corrija os erros no formulário.');
+      setSubmitMessage({
+        type: 'error',
+        text: 'Por favor, corrija os erros no formulário.'
+      });
     }
   };
 
@@ -106,6 +260,15 @@ function FormularioEmpresa() {
       <h1 className="text-3xl font-semibold text-gray-800 mb-8 text-center">
         Formulário para {nomeEmpresa.replace('-', ' ').toUpperCase()}
       </h1>
+      
+      {submitMessage.text && (
+        <div className={`p-4 mb-6 rounded-md ${
+          submitMessage.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+        }`}>
+          {submitMessage.text}
+        </div>
+      )}
+      
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
           <label htmlFor="nomeCompleto" className="block text-gray-700 text-sm font-bold mb-2">
@@ -158,6 +321,23 @@ function FormularioEmpresa() {
             }`}
           />
           {errors.cpf && <p className="text-red-500 text-xs italic">{errors.cpf}</p>}
+        </div>
+
+        <div>
+          <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
+            Email:
+          </label>
+          <input
+            type="email"
+            id="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+              errors.email ? 'border-red-500' : ''
+            }`}
+          />
+          {errors.email && <p className="text-red-500 text-xs italic">{errors.email}</p>}
         </div>
 
         <div>
@@ -227,6 +407,25 @@ function FormularioEmpresa() {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
+        </div>
+
+        <div>
+          <label htmlFor="cep" className="block text-gray-700 text-sm font-bold mb-2">
+            CEP:
+          </label>
+          <input
+            type="text"
+            id="cep"
+            value={formData.cep}
+            onChange={handleChange}
+            required
+            placeholder="00000-000"
+            pattern="\d{5}-\d{3}"
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+              errors.cep ? 'border-red-500' : ''
+            }`}
+          />
+          {errors.cep && <p className="text-red-500 text-xs italic">{errors.cep}</p>}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -342,22 +541,42 @@ function FormularioEmpresa() {
             }`}
           >
             <option value="">Selecione</option>
-            <option value="fundamentalIncompleto">Fundamental Incompleto</option>
-            <option value="fundamentalCompleto">Fundamental Completo</option>
-            <option value="medioIncompleto">Médio Incompleto</option>
-            <option value="medioCompleto">Médio Completo</option>
-            <option value="superiorIncompleto">Superior Incompleto</option>
-            <option value="superiorCompleto">Superior Completo</option>
-            <option value="posGraduacao">Pós-Graduação</option>
+            <option value="Fundamental Incompleto">Fundamental Incompleto</option>
+            <option value="Fundamental Completo">Fundamental Completo</option>
+            <option value="Médio Incompleto">Médio Incompleto</option>
+            <option value="Médio Completo">Médio Completo</option>
+            <option value="Superior Incompleto">Superior Incompleto</option>
+            <option value="Superior Completo">Superior Completo</option>
+            <option value="Pós-Graduação">Pós-Graduação</option>
           </select>
           {errors.escolaridade && <p className="text-red-500 text-xs italic">{errors.escolaridade}</p>}
         </div>
 
+        <div>
+          <label htmlFor="metodoNotificacao" className="block text-gray-700 text-sm font-bold mb-2">
+            Método de Notificação:
+          </label>
+          <select
+            id="metodoNotificacao"
+            value={formData.metodoNotificacao}
+            onChange={handleChange}
+            required
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          >
+            <option value="email">Email</option>
+            <option value="sms">SMS</option>
+            <option value="whatsapp">WhatsApp</option>
+          </select>
+        </div>
+
         <button
           type="submit"
-          className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline"
+          disabled={isSubmitting}
+          className={`${
+            isSubmitting ? 'bg-indigo-300' : 'bg-indigo-500 hover:bg-indigo-700'
+          } text-white font-bold py-3 px-6 rounded focus:outline-none focus:shadow-outline`}
         >
-          Enviar
+          {isSubmitting ? 'Enviando...' : 'Enviar'}
         </button>
       </form>
     </div>

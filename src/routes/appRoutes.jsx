@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "../components/layout.jsx";
 import Home from "../pages/home.jsx";
-import Detalhes from "../pages/detalhes.jsx";
+import Detalhes from "../pages/Detalhes.jsx";
 import Programas from "../pages/programasPatrocinio.jsx";
 import FormularioEmpresa from "../pages/formularioEmpresa.jsx";
 import Especificacoes from "../pages/especificacoesPatrocinio.jsx";
