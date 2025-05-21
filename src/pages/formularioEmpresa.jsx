@@ -17,9 +17,9 @@ function FormularioEmpresa() {
     celular: '',
     rendaFamiliar: '',
     escolaridade: '',
-    email: '', // Campo adicionado para corresponder ao backend
-    cep: '', // Campo adicionado para corresponder ao backend
-    metodoNotificacao: 'email' // Campo adicionado para corresponder ao backend
+    email: '',
+    cep: '',
+    metodoNotificacao: 'email'
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -129,7 +129,6 @@ function FormularioEmpresa() {
       isValid = false;
     }
 
-    // Validação para o campo de email
     if (!formData.email) {
       newErrors.email = 'Email é obrigatório.';
       isValid = false;
@@ -138,7 +137,6 @@ function FormularioEmpresa() {
       isValid = false;
     }
 
-    // Validação para o campo de CEP
     if (!formData.cep) {
       newErrors.cep = 'CEP é obrigatório.';
       isValid = false;
@@ -206,6 +204,11 @@ function FormularioEmpresa() {
             text: 'Cadastro realizado com sucesso!'
           });
           
+          // Limpar mensagem após 7 segundos
+          setTimeout(() => {
+            setSubmitMessage({ type: '', text: '' });
+          }, 7000);
+          
           // Limpar formulário após sucesso
           setFormData({
             nomeCompleto: '',
@@ -256,7 +259,7 @@ function FormularioEmpresa() {
   };
 
   return (
-    <div className="min-h-full mx-auto p-6 bg-white rounded-md shadow-md">
+    <div className="max-w-2xl h-full mx-auto mt-10 p-6 bg-white rounded-md shadow-md overflow-auto">
       <h1 className="text-3xl font-semibold text-gray-800 mb-8 text-center">
         Formulário para {nomeEmpresa.replace('-', ' ').toUpperCase()}
       </h1>
