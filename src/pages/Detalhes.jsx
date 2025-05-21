@@ -156,16 +156,16 @@ function Detalhes() {
   };
 
   return (
-    <div className="h-full bg-gray-100 flex flex-col items-center px-4 md:px-8 lg:px-16">
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center px-4 md:px-8 lg:px-16">
       <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center m-8">
         Detalhes - {sponsor.nome}
       </h1>
       <div className="w-full max-w-[88vw]">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-8">
-          <InfoBox title="Usuários Impactados" value={dadosResumo.usuariosImpactados} />
-          <InfoBox title="Usuários Impact." sub=" (Último Mês)" value={dadosResumo.usuariosImpactadosUltimoMes} />
-          <InfoBox title="Comunidades Criadas" value={dadosResumo.comunidadesCriadas} />
-          <InfoBox title="Planos Adquiridos" value={sponsor.planosAdquiridos} />
+          <InfoBox title="Usuários Impactados" value={dadosResumo.usuariosImpactados} change={dadosResumo.change} />
+          <InfoBox title="Usuários Impact." sub=" (Último Mês)" value={dadosResumo.usuariosImpactadosUltimoMes} change="+141" />
+          <InfoBox title="Comunidades Criadas" value={dadosResumo.comunidadesCriadas} change="+2"/>
+          <InfoBox title="Planos Adquiridos" value={sponsor.planosAdquiridos} change="+15"  />
           <InfoBox title="Planos Distribuídos" value={sponsor.planosDistribuidos}  />
         </div>
 
@@ -212,7 +212,7 @@ function Detalhes() {
               )}
             </div>
           </div>
-          <div className="lg:col-span-2 min-h-[30rem] flex items-stretch sm:h-[40rem] lg:h-[35rem] mb-16">
+          <div className="lg:col-span-2 min-h-[30rem] flex items-stretch sm:h-[40rem] lg:h-[35rem] sm:mb-30 lg:mb-20">
             <div className="bg-white rounded-lg shadow px-7 flex flex-col justify-around w-full sm:justify-evenly lg:justify-around">
               <Dropdown
                 label="Estado"
@@ -248,7 +248,7 @@ function Detalhes() {
   );
 }
 
-function InfoBox({ title, sub, value }) {
+function InfoBox({ title, sub, value, change }) {
   return (
     <div className="bg-gray-200 p-4 rounded-lg shadow text-center flex flex-col size-auto gap-2">
       <div className="flex justify-center items-center gap-2">

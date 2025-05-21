@@ -26,7 +26,7 @@ export default function Programas() {
   }
 
   return (
-    <div className="relative h-full w-full bg-gradient-to-b from-gray-100 to-gray-200 text-center flex flex-col">
+    <div className="relative min-h-full w-full bg-gradient-to-b from-gray-100 to-gray-200 text-center flex flex-col">
       <div className=" flex flex-col gap-8 items-center">
         <div className="flex flex-col items-center gap-2 max-w-[80vw] mt-10">
           <h1>PATROCÍNIO QUE TRANSFORMA!</h1>

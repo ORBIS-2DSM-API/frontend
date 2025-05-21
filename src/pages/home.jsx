@@ -15,9 +15,9 @@ export default function Home() {
   }, [selectedSponsor]);
 
   return (
-    <div className="relative h-full w-full bg-gradient-to-b from-gray-100 to-gray-200 text-center flex flex-col">
+    <div className="relative w-full bg-gradient-to-b from-gray-100 to-gray-200 text-center flex flex-col">
       
-      <div className="flex-grow flex flex-col gap-8">
+      <div className="flex flex-col gap-8">
         <div className="flex flex-col items-center gap-2">
           <h1 className="text-2xl font-bold mt-6 m-2 tracking-wider">
             BEM VINDO À PÁGINA DE PATROCINADORES

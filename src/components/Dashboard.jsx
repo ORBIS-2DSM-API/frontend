@@ -4,6 +4,7 @@ import { RxCross1 } from "react-icons/rx";
 import "leaflet/dist/leaflet.css";
 import { Link } from "react-router-dom";
 import vendedores from "../data/vendedores.json";
+import comunidadesData from "../data/comunidades.json";
 import { fetchSponsorStats } from "../services/api";
 
 export default function Dashboard({ sponsor, onClose, impactedUsers, totalStores, totalCommunities }) {
@@ -28,52 +29,44 @@ export default function Dashboard({ sponsor, onClose, impactedUsers, totalStores
   }, [onClose]);
 
 
-  useEffect(() => {
-    if (!sponsor || !sponsor.id) return;
+  // useEffect(() => {
+  //   if (!sponsor || !sponsor.id) return;
 
-    setLoading(true);
-    setError(null);
+  //   setLoading(true);
+  //   setError(null);
 
-    fetchSponsorStats(sponsor.id)
-      .then(data => {
-        setStats({
-          impactedUsers: data.impactedUsers,
-          totalStores: data.totalStores,
-          totalCommunities: data.totalCommunities
-        });
-      })
-      .catch(err => {
-        console.error(err);
-        setError("Não foi possível carregar as estatísticas");
-      })
-      .finally(() => setLoading(false));
-  }, [sponsor]);
+  //   fetchSponsorStats(sponsor.id)
+  //     .then(data => {
+  //       setStats({
+  //         impactedUsers: data.impactedUsers,
+  //         totalStores: data.totalStores,
+  //         totalCommunities: data.totalCommunities
+  //       });
+  //     })
+  //     .catch(err => {
+  //       console.error(err);
+  //       setError("Não foi possível carregar as estatísticas");
+  //     })
+  //     .finally(() => setLoading(false));
+  // }, [sponsor]);
 
   // Monta o array de cards (mantendo a aparência original)
   const cards = [
     {
       label: "Usuários impactados",
-      value: loading
-        ? "—"
-        : error
-        ? "--"
-        : stats.impactedUsers.toLocaleString(),
+      value: sponsor.usuariosImpactados,
       color: "text-blue-500",
       bar: "bg-blue-500",
     },
     {
       label: "Total de lojas",
-      value: loading
-        ? "—"
-        : error
-        ? "--"
-        : stats.totalStores.toLocaleString(),
+      value: sponsor.totalLojas,
       color: "text-blue-700",
       bar: "bg-blue-700",
     },
     {
       label: "Total de comunidades",
-      value: stats.totalCommunities.toLocaleString(),
+      value: sponsor.comunidadesCriadas,
       color: "text-blue-900",
       bar: "bg-blue-900",
     },
