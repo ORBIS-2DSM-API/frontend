@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import SponsorCard from "../components/SponsorCard.jsx";
 import Dashboard from "../components/Dashboard.jsx";
 import sponsors from "../data/programas.json";
+import FloatingDownloadButton from "../components/manual.jsx";
 
 
 export default function Home() {
@@ -45,6 +46,7 @@ export default function Home() {
           />
         </div>
       )}
+      <FloatingDownloadButton />
     </div>
   );
 }
