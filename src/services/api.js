@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'
+  baseURL: 'http://localhost:5173'
 });
 
 export default api;
@@ -13,6 +13,7 @@ export default api;
 export const fetchSponsorStats = async (sponsorId) => {
   try {
     const response = await api.get(`/sponsors/${sponsorId}/stats`);
+    console.log(response);
     
     if (!response.ok) {
       throw new Error(`Erro ao buscar estatísticas do patrocinador: ${response.status}`);
