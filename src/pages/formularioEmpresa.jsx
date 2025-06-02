@@ -259,7 +259,7 @@ function FormularioEmpresa() {
   };
 
   return (
-    <div className="max-w-2xl h-full mx-auto mt-10 p-6 bg-white rounded-md shadow-md overflow-auto">
+    <div className="max-w-2xl h-full mx-auto pt-8 p-6 bg-white rounded-md shadow-md overflow-scroll">
       <h1 className="text-3xl font-semibold text-gray-800 mb-8 text-center">
         Formulário para {nomeEmpresa.replace('-', ' ').toUpperCase()}
       </h1>

@@ -5,7 +5,7 @@ export default function Layout() {
   return (
     <>
       <Header />
-      <main className="h-screen bg-gradient-to-b from-gray-100 to-gray-200">
+      <main className="h-screen pt-6 bg-gradient-to-b from-gray-100 to-gray-200">
         <Outlet />
       </main>
     </>
