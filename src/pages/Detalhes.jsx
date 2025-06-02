@@ -156,22 +156,24 @@ function Detalhes() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center px-4 md:px-8 lg:px-16">
-      <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center m-8">
-        Detalhes - {sponsor.nome}
-      </h1>
-      <div className="w-full max-w-[88vw]">
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center px-4 md:px-8 lg:px-16 -mt-[1px] relative">
+      <div className="w-full max-w-[88vw] text-center mt-4 mb-16">
+        <h1 className="text-4xl md:text-4xl lg:text-5xl font-bold text-[#1E40AF] pb-2 border-b-2 border-blue-200 inline-block">
+          {sponsor.nome}
+        </h1>
+      </div>
+      <div className="w-full max-w-[88vw] relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-8">
-          <InfoBox title="Usuários Impactados" value={dadosResumo.usuariosImpactados} change={dadosResumo.change} />
-          <InfoBox title="Usuários Impact." sub=" (Último Mês)" value={dadosResumo.usuariosImpactadosUltimoMes} change="+141" />
-          <InfoBox title="Comunidades Criadas" value={dadosResumo.comunidadesCriadas} change="+2"/>
-          <InfoBox title="Planos Adquiridos" value={sponsor.planosAdquiridos} change="+15"  />
-          <InfoBox title="Planos Distribuídos" value={sponsor.planosDistribuidos}  />
+          <InfoBox title="Usuários Impactados" value={dadosResumo.usuariosImpactados} />
+          <InfoBox title="Usuários Impactados" sub=" (Último Mês)" value={dadosResumo.usuariosImpactadosUltimoMes} />
+          <InfoBox title="Comunidades Criadas" value={dadosResumo.comunidadesCriadas} />
+          <InfoBox title="Planos Adquiridos" value={sponsor.planosAdquiridos} />
+          <InfoBox title="Planos Distribuídos" value={sponsor.planosDistribuidos} />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-7">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-7 pb-4">
           <div className="lg:col-span-3">
-            <div className="h-[35rem] w-full rounded-lg overflow-hidden relative">
+            <div className="h-[24rem] w-full rounded-lg overflow-hidden relative">
               <MapContainer
                 center={[mapaPosicao.lat, mapaPosicao.lng]}
                 zoom={mapaPosicao.zoom}
@@ -205,15 +207,15 @@ function Detalhes() {
               {cidadeSelecionada && cidadesDaLista.length > 1 && (
                 <button
                   onClick={proximaCidade}
-                  className="absolute right-4 top-4 z-[1000] bg-blue-600 text-white p-2 rounded shadow"
+                  className="absolute right-4 top-4 z-[1000] bg-[#4285F4] hover:bg-[#357ABD] text-white px-3 py-1.5 text-sm rounded-lg shadow transition-colors duration-300"
                 >
                   Próxima Cidade ➜
                 </button>
               )}
             </div>
           </div>
-          <div className="lg:col-span-2 min-h-[30rem] flex items-stretch sm:h-[40rem] lg:h-[35rem] sm:mb-30 lg:mb-20">
-            <div className="bg-white rounded-lg shadow px-7 flex flex-col justify-around w-full sm:justify-evenly lg:justify-around">
+          <div className="lg:col-span-2 min-h-[24rem] flex items-stretch sm:h-[24rem] lg:h-[24rem] sm:mb-4 lg:mb-4">
+            <div className="bg-white rounded-lg shadow px-7 flex flex-col justify-center gap-16 w-full">
               <Dropdown
                 label="Estado"
                 options={estados}
@@ -234,12 +236,6 @@ function Detalhes() {
                 }}
                 disabled={!estadoSelecionado}
               />
-              <Dropdown
-                label="Comunidades"
-                options={["Total de Comunidades", "Novas Comunidades (último mês)"]} 
-                value={tipoComunidade}
-                onChange={(e) => setTipoComunidade(e.target.value)}
-              />
             </div>
           </div>
         </div>
@@ -248,14 +244,26 @@ function Detalhes() {
   );
 }
 
-function InfoBox({ title, sub, value, change }) {
+function InfoBox({ title, value, sub = "" }) {
   return (
-    <div className="bg-gray-200 p-4 rounded-lg shadow text-center flex flex-col size-auto gap-2">
-      <div className="flex justify-center items-center gap-2">
-        <p className="text-lg font-bold text-gray-800">{title}</p>
-        <p className="text-sm font-bold text-gray-800">{sub}</p>
+    <div className="relative bg-white p-6 rounded-xl overflow-hidden
+                    shadow-[0_4px_20px_-4px_rgba(30,64,175,0.1)]
+                    group hover:shadow-[0_8px_25px_-5px_rgba(30,64,175,0.2)]
+                    transition-all duration-300">
+      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-blue-50 opacity-50 
+                      group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-tl from-transparent via-transparent to-blue-50 opacity-50 
+                      group-hover:opacity-100 transition-opacity duration-300" />
+      <div className="relative flex flex-col items-center text-center">
+        <h3 className="text-gray-700 font-semibold mb-3">
+          {title}{sub}
+        </h3>
+        <div className="flex items-baseline justify-center">
+          <span className="text-3xl md:text-4xl font-bold text-[#1E40AF]">
+            {value}
+          </span>
+        </div>
       </div>
-      <p className="text-2xl font-semibold text-black">{value}</p>
     </div>
   );
 }
@@ -263,14 +271,14 @@ function InfoBox({ title, sub, value, change }) {
 function Dropdown({ label, options = [], value, onChange, disabled = false }) {
   return (
     <div className="flex flex-col text-left">
-      <label className="text-lg font-medium mb-1 text-gray-700">{label}</label>
+      <label className="text-2xl font-semibold mb-2 text-gray-700">{label}</label>
       <select
-        className="p-2 border border-gray-300 rounded"
+        className="p-3 text-lg border border-gray-300 rounded"
         value={value}
         onChange={onChange}
         disabled={disabled}
       >
-        <option value="">{disabled ? "Selecione o estado primeiro" : "Selecione..."}</option>
+        <option value="">{disabled ? "Selecione o estado primeiro" : "Selecione"}</option>
         {options.map((opt, i) => (
           <option key={i} value={opt}>
             {opt}

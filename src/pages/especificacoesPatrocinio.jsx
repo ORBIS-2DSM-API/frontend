@@ -25,44 +25,56 @@ export default function Especificacoes() {
   }
 
   return (
-    <div className="relative h-full w-full bg-gradient-to-b from-gray-100 to-gray-200 flex flex-col min-h-screen py-12 px-4">
+    <div className="relative w-full h-screen bg-gray-100 flex items-center justify-center overflow-y-auto md:overflow-hidden">
       <div className="absolute top-6 left-6 hidden lg:flex">
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center space-x-2 px-4 py-1.5 border border-gray-300 rounded-full bg-blue-950 shadow-sm hover:shadow-md transition-shadow duration-200 text-white"
+          className="px-8 py-3 bg-[#1E3A8A] text-white rounded-full font-medium text-lg hover:bg-[#172554] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#1E3A8A] focus:ring-offset-2 flex items-center gap-2"
         >
           <ArrowLeft size={18} />
-          <span className="font-manrope">Voltar</span>
+          <span>Voltar</span>
         </button>
       </div>
 
-      <div className="w-full max-w-3xl bg-white rounded-lg shadow-lg mx-auto overflow-hidden">
-        <div className="bg-gradient-to-r from-blue-700 to-indigo-700 p-7 text-white text-center">
-          <h1 className="text-3xl font-inter">{programa.titulo}</h1>
+      <div className="flex flex-col items-center w-full">
+        <div className="w-full max-w-3xl bg-white rounded-xl shadow-lg mx-auto overflow-hidden md:transform md:-translate-y-4">
+          <div className="bg-[#1E3A8A] p-7 text-white text-center">
+            <h1 className="text-3xl font-inter">{programa.titulo}</h1>
+          </div>
+
+          <div className="p-8 space-y-6">
+            <section className="max-h-[calc(100vh-300px)] md:max-h-none">
+              <h2 className="text-2xl font-semibold mb-4">Descrição</h2>
+              <p className="text-gray-700 leading-relaxed text-lg mb-6 not-italic">
+                {programa.descricaoDetalhada}
+              </p>
+              <h2 className="text-2xl font-semibold mb-4">Requisitos</h2>
+              <ul className="space-y-3 text-gray-700 list-disc list-inside not-italic">
+                <li className="text-lg leading-relaxed">Idade mínima: {programa.idadeMin} anos</li>
+                <li className="text-lg leading-relaxed">Escolaridade: {programa.nivelEscolaridade}</li>
+                <li className="text-lg leading-relaxed">Vagas disponíveis: {programa.vagasDisponiveis}</li>
+              </ul>
+            </section>
+          </div>
+
+          <div className="p-6 text-center">
+            <Link
+              to={`/formulario/${encodeURIComponent(programa.nome)}`}
+              className="inline-block px-8 py-3 bg-[#1E3A8A] text-white text-lg font-semibold rounded-full shadow hover:bg-[#172554] transition"
+            >
+              Candidatar‑se
+            </Link>
+          </div>
         </div>
 
-        <div className="p-8 space-y-8">
-          <section>
-            <h2 className="text-2xl font-semibold mb-3">Descrição</h2>
-            <p className="text-gray-700 leading-relaxed text-lg">
-              {programa.descricaoDetalhada}
-            </p>
-            <h2 className="text-xl font-semibold">Requisitos</h2>
-            <ul className="mt-2 space-y-1 text-lg opacity-90 text-black list-disc list-inside">
-              <li>Idade mínima: {programa.idadeMin} anos</li>
-              <li>Escolaridade: {programa.nivelEscolaridade}</li>
-              <li>Vagas disponíveis: {programa.vagasDisponiveis}</li>
-            </ul>
-          </section>
-        </div>
-
-        <div className=" p-6 text-center">
-          <Link
-            to={`/formulario/${encodeURIComponent(programa.nome)}`}
-            className="inline-block px-8 py-3 bg-blue-600 text-white text-lg font-semibold rounded-full shadow hover:bg-blue-700 transition"
+        <div className="lg:hidden mt-12 mb-8 w-full flex justify-center">
+          <button
+            onClick={() => navigate(-1)}
+            className="px-8 py-3 bg-[#1E3A8A] text-white rounded-full font-medium text-lg hover:bg-[#172554] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#1E3A8A] focus:ring-offset-2 flex items-center gap-2"
           >
-            Candidatar‑se
-          </Link>
+            <ArrowLeft size={18} />
+            <span>Voltar</span>
+          </button>
         </div>
       </div>
     </div>

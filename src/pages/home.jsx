@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import SponsorCard from "../components/SponsorCard.jsx";
 import Dashboard from "../components/Dashboard.jsx";
 import sponsors from "../data/programas.json";
-import FloatingDownloadButton from "../components/manual.jsx";
-
 
 export default function Home() {
   const [selectedSponsor, setSelectedSponsor] = useState(null);
@@ -16,18 +14,17 @@ export default function Home() {
   }, [selectedSponsor]);
 
   return (
-    <div className="relative w-full bg-gradient-to-b from-gray-100 to-gray-200 text-center flex flex-col">
-      
+    <div className="relative w-full bg-gray-100 text-center flex flex-col">
       <div className="flex flex-col gap-8">
-        <div className="flex flex-col items-center gap-2">
-          <h1 className="text-2xl font-bold mt-6 m-2 tracking-wider">
-            BEM VINDO À PÁGINA DE PATROCINADORES
+        <div className="flex flex-col items-center py-10">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1E3A8A] mb-8">
+            BEM-VINDO À PÁGINA DE PATROCINADORES
           </h1>
-          <p className="mb-8 text-gray-600 italic">
-            Clique em algum dos cards para mais informações
+          <p className="text-[#1E3A8A] text-lg sm:text-xl max-w-3xl px-4">
+            Clique nos cards para mais informações
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-14 gap-y-10 px-4 mx-auto max-w-6xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-8 px-4 mx-auto max-w-7xl">
           {sponsors.map((sponsor) => (
             <SponsorCard
               key={sponsor.id}
@@ -46,7 +43,6 @@ export default function Home() {
           />
         </div>
       )}
-      <FloatingDownloadButton />
     </div>
   );
 }

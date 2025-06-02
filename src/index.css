@@ -20,15 +20,13 @@
 }
 
 :root {
-  --primary: #6a59ff;
-  --white: #ffffff;
-  --bg: #f5f5f5;
+  --swiper-theme-color: #1E3A8A !important;
+  --swiper-navigation-size: 24px !important;
 }
 
 html, body, #root{
   height: 100vh;
 }
-
 
 body {
   font-size: 1.6rem;
@@ -37,31 +35,29 @@ body {
 .container-swiper {
   max-width: 100%;
   padding: 2rem 1rem;
-
+  position: relative;
 }
 
 .swiper_container {
-  height: auto !important;
-  padding: 1rem 0;
+  height: 32rem;
+  padding: 2rem 0;
   position: relative;
 }
 
 .swiper-slide {
-  width: 20rem;
-  height: auto !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 23rem;
+  height: 28rem;
+  position: relative;
 }
 
 @media (max-width: 500px) {
   .swiper_container {
-    height: auto !important;
+    height: 28rem;
   }
 
   .swiper-slide {
-    width: 28rem !important;
-    height: auto !important;
+    width: 20rem !important;
+    height: 24rem !important;
   }
 }
 
@@ -70,119 +66,68 @@ body {
   display: none;
 }
 
-.slider-controler {
-  position: relative;
-  bottom: 0rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 2rem;
+.swiper-wrapper {
+  padding: 0 3rem;
 }
 
-.slider-controler .swiper-button-next {
-  left: 61% !important;
-  transform: translateX(-58%) !important;
-}
-
-@media (max-width: 990px) {
-  .slider-controler .swiper-button-next {
-    left: 70% !important;
-    transform: translateX(-70%) !important;
-  }
-}
-
-@media (max-width: 450px) {
-  .slider-controler .swiper-button-next {
-    left: 80% !important;
-    transform: translateX(-80%) !important;
-  }
-}
-
-@media (max-width: 990px) {
-  .slider-controler .swiper-button-prev {
-    left: 30% !important;
-    transform: translateX(-30%) !important;
-  }
-}
-
-@media (max-width: 450px) {
-  .slider-controler .swiper-button-prev {
-    left: 20% !important;
-    transform: translateX(-20%) !important;
-  }
-}
-
-.slider-controler .slider-arrow {
-  background: var(--white);
-  width: 3.5rem;
-  height: 3.5rem;
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: white;
   border-radius: 50%;
-  left: 39%;
-  transform: translateX(-42%);
-  filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1));
+  padding: 2rem !important;
+  color: var(--swiper-theme-color) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
-.slider-controler .slider-arrow ion-icon {
-  font-size: 2rem;
-  color: #222224;
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: var(--swiper-theme-color);
+  color: white !important;
 }
 
-.slider-controler .slider-arrow::after {
-  content: "";
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 1.2rem !important;
+  font-weight: bold;
 }
 
 .swiper-pagination {
   position: relative;
-  width: 20rem !important;
-  bottom: 0;
-  margin-top: 0.5rem;
+  bottom: -10px !important;
 }
 
-.swiper-pagination .swiper-pagination-bullet {
-  filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1));
+.swiper-pagination-bullet {
+  background-color: var(--swiper-theme-color) !important;
 }
 
-.swiper-pagination .swiper-pagination-bullet-active {
-  background: var(--primary);
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background-color: #1E3A8A;
 }
 
 @media (max-width: 768px) {
-  .flex-grow > div:first-child {
-    margin-bottom: 2rem; 
-  }
-
   .container-swiper {
-    padding: 0.5rem 0.25rem;
-    margin-top: 0; 
-    margin-bottom: 0; 
+    padding: 1rem 0.5rem;
   }
 
   .swiper_container {
-    width: 98%;
+    height: 28rem;
   }
 
   .swiper-slide {
-    width: 78% !important; 
-    padding: 1rem !important;
+    width: 85% !important;
+    height: 24rem !important;
   }
 
-  .slider-controler {
-    padding-top: 1rem;
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
   }
 
-  .slider-controler .swiper-button-prev,
-  .slider-controler .swiper-button-next {
-    display: none !important;
-  }
-
-  .swiper-pagination {
-    bottom: -0.25rem;
-    margin-top: 0.25rem;
-  }
-
-  .swiper-pagination-bullet {
-    width: 0.6rem !important;
-    height: 0.6rem !important;
-    margin: 0 0.3rem !important;
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 1rem !important;
   }
 }

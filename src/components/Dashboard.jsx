@@ -3,9 +3,16 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { RxCross1 } from "react-icons/rx";
 import "leaflet/dist/leaflet.css";
 import { Link } from "react-router-dom";
+import L from "leaflet";
 import vendedores from "../data/vendedores.json";
 import comunidadesData from "../data/comunidades.json";
 import { fetchSponsorStats } from "../services/api";
+
+const blueIcon = new L.Icon({
+  iconUrl: "https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png",
+  iconSize: [32, 32],
+  iconAnchor: [16, 32],
+});
 
 export default function Dashboard({ sponsor, onClose, impactedUsers, totalStores, totalCommunities }) {
   const modalRef = useRef();
@@ -27,7 +34,6 @@ export default function Dashboard({ sponsor, onClose, impactedUsers, totalStores
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [onClose]);
-
 
   // useEffect(() => {
   //   if (!sponsor || !sponsor.id) return;
@@ -73,23 +79,23 @@ export default function Dashboard({ sponsor, onClose, impactedUsers, totalStores
   ];
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-2">
       <div
         ref={modalRef}
-        className="bg-white p-4 sm:p-10 rounded-2xl shadow-lg w-[95%] sm:w-[85%] min-h-[80vh] sm:h-[80vh] overflow-y-auto"
+        className="bg-white rounded-2xl shadow-lg w-full max-w-4xl max-h-[85vh] overflow-hidden flex flex-col"
       >
         {/* Header */}
-        <div className="flex justify-between items-center mb-6">
-          <img src={sponsor.logo} alt="Logo" className="h-16 sm:h-20" />
-          <div className="flex items-center gap-6">
+        <div className="sticky top-0 bg-white z-50 px-4 py-3 border-b flex justify-between items-center">
+          <h2 className="text-xl sm:text-2xl font-bold text-blue-950">{sponsor.nome}</h2>
+          <div className="flex items-center gap-3">
             <Link
               to={`/detalhes/${sponsor.nome.toLowerCase()}`}
-              className="text-black text-lg hover:underline font-bold"
+              className="text-blue-950 text-sm sm:text-base hover:underline font-bold"
             >
-              Ir para Detalhes
+              Detalhes
             </Link>
             <button
-              className="text-black text-2xl font-bold"
+              className="text-blue-950 text-lg font-bold hover:text-blue-900 transition-colors p-1"
               onClick={onClose}
             >
               <RxCross1 />
@@ -98,57 +104,71 @@ export default function Dashboard({ sponsor, onClose, impactedUsers, totalStores
         </div>
 
         {/* Conteúdo principal */}
-        <div className="flex flex-col sm:flex-row gap-6 sm:gap-10">
-          {/* Cards */}
-          <div className="w-full flex flex-col gap-6">
-            {error && (
-              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-                {error}
-              </div>
-            )}
+        <div className="flex-1 overflow-y-auto">
+          <div className="px-8 py-4">
+            <div className="flex flex-col lg:flex-row gap-4 h-auto lg:h-[340px] justify-between">
+              {/* Cards */}
+              <div className="w-full lg:w-[47%] flex flex-col gap-3 h-[280px] lg:h-full">
+                {error && (
+                  <div className="bg-red-100 border border-red-400 text-red-700 px-3 py-2 rounded-xl text-sm">
+                    {error}
+                  </div>
+                )}
 
-            {cards.map((item, index) => (
-              <div
-                key={index}
-                className="bg-gray-100 p-8 rounded-lg shadow flex flex-col"
-              >
-                <div className="grid grid-cols-[auto_1fr] items-center gap-8 w-full">
-                  <span
-                    className={`font-bold ${item.color} text-lg sm:text-2xl md:text-4xl`}
+                {cards.map((item, index) => (
+                  <div
+                    key={index}
+                    className="bg-gray-100 p-4 rounded-xl shadow flex flex-col flex-1 justify-center"
                   >
-                    {item.value}
-                  </span>
-                  <span className="text-sm sm:text-lg md:text-xl font-bold text-gray-600 text-right">
-                    {item.label}
-                  </span>
-                </div>
-                <div
-                  className={`h-5 sm:h-6 w-full mt-3 ${item.bar} rounded-md`}
-                ></div>
+                    <div className="grid grid-cols-[1fr_auto] items-center gap-3 w-full">
+                      <span className="text-base sm:text-lg lg:text-xl font-semibold text-blue-950 text-left">
+                        {item.label}
+                      </span>
+                      <span
+                        className={`font-bold ${item.color} text-2xl sm:text-3xl lg:text-4xl`}
+                      >
+                        {item.value}
+                      </span>
+                    </div>
+                    <div
+                      className={`h-2.5 w-full mt-3 ${item.bar} rounded-full`}
+                    ></div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
 
-          {/* Mapa */}
-          <div className="w-full h-64 sm:h-[32rem] rounded-lg overflow-hidden">
-            <MapContainer
-              center={[-14.235, -51.9253]}
-              zoom={4}
-              style={{ width: "100%", height: "100%" }}
-            >
-              <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-              {vendedores.map((vendedor, i) => (
-                <Marker key={i} position={[vendedor.lat, vendedor.lng]}>
-                  <Popup>
-                    <b>
-                      {vendedor.cidade} - {vendedor.estado}
-                    </b>
-                    <br />
-                    Quantidade de vendedores: {vendedor.quantidade}
-                  </Popup>
-                </Marker>
-              ))}
-            </MapContainer>
+              {/* Mapa */}
+              <div className="w-full lg:w-[47%] bg-gray-100 rounded-xl h-[340px] lg:h-full">
+                <MapContainer
+                  center={[-14.235, -51.9253]}
+                  zoom={4}
+                  style={{ width: "100%", height: "100%", borderRadius: "0.75rem" }}
+                  className="shadow-inner"
+                >
+                  <TileLayer 
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    className="brightness-95 contrast-105"
+                  />
+                  {vendedores.map((vendedor, i) => (
+                    <Marker 
+                      key={i} 
+                      position={[vendedor.lat, vendedor.lng]}
+                      icon={blueIcon}
+                    >
+                      <Popup className="rounded-lg">
+                        <div className="font-semibold text-sm">
+                          <b>
+                            {vendedor.cidade} - {vendedor.estado}
+                          </b>
+                          <br />
+                          Quantidade de vendedores: {vendedor.quantidade}
+                        </div>
+                      </Popup>
+                    </Marker>
+                  ))}
+                </MapContainer>
+              </div>
+            </div>
           </div>
         </div>
       </div>
